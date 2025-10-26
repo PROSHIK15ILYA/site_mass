@@ -15,7 +15,7 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { useScrollReveal, useMicroInteractions } from '~/composables/useAnimations'
 
 // Global SEO and meta management
