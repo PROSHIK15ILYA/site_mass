@@ -1,0 +1,155 @@
+.main-screen {
+  margin-top: 140px;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height:700px;
+}
+
+.main-screen_description {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-evenly;
+  height: 100%;
+}
+
+.description-tag {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 45px;
+  line-height: 60px;
+  text-transform: uppercase;
+  text-align: left;
+  color: #698D69;
+}
+
+.description-about {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+  padding: 24px;
+  border-radius: 15px;
+}
+
+.description-about_title {
+  font-style: normal;
+  font-weight: 600;
+  font-size: 30px;
+  text-transform: uppercase;
+  text-align: center;
+  color: #698D69;
+}
+
+.description-about_text {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 29px;
+  text-align: left;
+  color: #698D69;
+  cursor: pointer;
+}
+
+.description-about_text li {
+  margin-top: 20px;
+  transition: .3s ease;
+}
+
+.description-about_text li:hover {
+  text-decoration: underline #698D69;
+  text-indent: 10px;
+}
+
+.main-screen_intro {
+  width: 50%;
+  height:100%;
+  display:flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.intro-video {
+  border-radius: 15px;
+  height: inherit;
+}
+
+.description-tag__hidden {
+  display: none;
+  font-family: CafeParisC,sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 25px;
+  line-height: 35px;
+  text-transform: uppercase;
+  text-align: left;
+  color: #698D69;
+  position: absolute;
+  top: 300px;
+  background: #ffffff;
+  border-radius: 15px;
+  padding: 10px;
+}
+
+@media screen and (max-width: 1080px) {
+  .description-tag {
+    font-size:30px;
+    line-height: 40px;
+  }
+
+  .description-about_text {
+    font-size:24px;
+    line-height: 25px;
+  }
+
+  .main-screen {
+    height: 500px;
+  }
+}
+
+@media screen and (max-width: 840px) {
+  .description-about_text {
+    margin: 0;
+  }
+
+  .description-about {
+    padding: 12px;
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .main-screen{
+    height: auto;
+    overflow: hidden;
+    margin-top: 100px;
+    max-height:700px;
+  }
+
+  .intro-video {
+    border-radius: 0;
+    border: none;
+  }
+
+  .main-screen_intro {
+    position: relative;
+    width: 100%;
+  }
+
+  .main-screen_description {
+    display: none;
+  }
+
+  .description-tag__hidden {
+    display:block;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .main-screen {
+    margin-top: 120px;
+  }
+}

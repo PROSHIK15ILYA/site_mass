@@ -1,0 +1,14 @@
+// Main SCSS file - используем @/ вместо ~
+@import '@/assets/scss/base';
+@import '@/assets/scss/variables';
+@import '@/assets/scss/mixins';
+
+// Layouts
+@import '@/assets/scss/layouts/header';
+@import '@/assets/scss/layouts/footer';
+
+// Components
+@import '@/assets/scss/components/categories';
+@import '@/assets/scss/components/services';
+@import '@/assets/scss/components/gallery';
+@import '@/assets/scss/components/video';

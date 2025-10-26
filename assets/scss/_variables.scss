@@ -1,0 +1,88 @@
+// Design tokens — Relaxation Studio (brand, spacing, typography, effects)
+
+// Brand palette
+$color-sage: #698D69; // primary
+$color-cream: #F7E0B7; // secondary background
+$color-dark-green: #414A42;
+$color-white: #FFFFFF;
+$color-dark-blue: #2C3E50; // text
+$color-accent: #8C6A4F; // refined warm accent for premium feel
+
+// Legacy compatibility aliases
+$primary-color: $color-sage;
+$secondary-color: $color-cream;
+$background-color: $color-cream;
+$text-color: $color-dark-blue;
+$text-light: #718096;
+$white: $color-white;
+$black: #000000;
+
+// Gradients & overlays
+$gradient-hero: linear-gradient(120deg, rgba($color-dark-green, 0.6), rgba($color-sage, 0.35));
+$gradient-card: linear-gradient(180deg, rgba($color-white, 0.6), rgba($color-white, 0.2));
+
+// Spacing scale
+$space-1: 4px;
+$space-2: 8px;
+$space-3: 12px;
+$space-4: 16px;
+$space-5: 20px;
+$space-6: 24px;
+$space-7: 32px;
+$space-8: 40px;
+$space-9: 48px;
+$space-10: 64px;
+
+// Radii
+$radius-sm: 8px;
+$radius-md: 12px;
+$radius-lg: 20px;
+$radius-xl: 28px;
+$radius-full: 9999px;
+
+// Shadows (soft, elevated)
+$shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.06);
+$shadow-elevated: 0 16px 40px rgba(0, 0, 0, 0.12);
+
+// Glassmorphism
+$glass-bg: rgba(255, 255, 255, 0.16);
+$glass-border: 1px solid rgba(255, 255, 255, 0.25);
+$glass-blur: 14px;
+
+// Transitions
+$transition-fast: 150ms ease;
+$transition-normal: 300ms ease;
+$transition-slow: 500ms ease;
+
+// Z-index scale
+$z-header: 1000;
+$z-overlay: 1100;
+$z-modal: 1200;
+$z-cursor: 1300;
+
+// Breakpoints
+$bp-sm: 480px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1280px;
+$bp-2xl: 1536px;
+
+// Typography
+$font-heading: 'Poppins', 'Montserrat', 'Inter', system-ui, -apple-system, sans-serif;
+$font-body: 'Nunito', 'Source Sans Pro', system-ui, -apple-system, sans-serif;
+$font-accent: 'Playfair Display', 'Cormorant', serif;
+
+$font-size-xs: 12px;
+$font-size-sm: 14px;
+$font-size-base: 16px;
+$font-size-lg: 18px;
+$font-size-xl: 20px;
+$font-size-2xl: 24px;
+$font-size-3xl: 30px;
+$font-size-4xl: 36px;
+$font-size-5xl: 48px;
+$font-size-6xl: 60px;
+
+// Container widths
+$container-max: 1280px;
+$container-padding: 24px;

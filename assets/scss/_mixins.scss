@@ -1,0 +1,53 @@
+// Common mixins for accessibility, responsiveness, and effects
+
+@mixin focus-ring($color: rgba(105, 141, 105, 0.7)) {
+  outline: none;
+  box-shadow: 0 0 0 3px $color;
+}
+
+@mixin visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+@mixin container($max: $container-max) {
+  max-width: $max;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $container-padding;
+  padding-right: $container-padding;
+}
+
+@mixin breakpoint($min) {
+  @media (min-width: $min) {
+    @content;
+  }
+}
+
+@mixin elevation($level: soft) {
+  @if $level == soft {
+    box-shadow: $shadow-soft;
+  } @else if $level == elevated {
+    box-shadow: $shadow-elevated;
+  } @else {
+    box-shadow: none;
+  }
+}
+
+@mixin transition($props: all, $dur: $transition-normal, $easing: ease) {
+  transition: $props $dur $easing;
+}
+
+@mixin glass {
+  backdrop-filter: blur($glass-blur);
+  -webkit-backdrop-filter: blur($glass-blur);
+  background: $glass-bg;
+  border: $glass-border;
+}

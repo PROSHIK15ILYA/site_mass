@@ -1,0 +1,177 @@
+/* Header visuals adjusted in component-scoped SCSS now */
+
+.header-logo {
+  display: inherit;
+  justify-content: space-between;
+  align-items: center;
+  width: fit-content;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.header-logo_image {
+  background-color: #ffffff;
+  border-radius: 15px;
+  padding: 10px;
+  max-width: 35px;
+  width: 100%;
+  height: auto;
+}
+
+.header-logo_title {
+  font-family: CafeParisC, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 17px;
+  margin-left: 12px;
+  color: #F7E0B7;
+}
+
+.header-navbar {
+  display: inherit;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header-navbar_item {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 24px;
+  text-transform: uppercase;
+  margin-left: 20px;
+  color: #F7E0B7;
+  text-decoration: none;
+  transition: .3s ease;
+}
+
+.header-navbar_item:first-of-type {
+  margin-left: 0;
+}
+
+.enroll-button {
+  background-color: #ffffff;
+  color: #698D69;
+  border-radius: 15px;
+  padding: 18px 24px;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+  transition: .3s ease;
+  cursor: pointer;
+}
+
+.enroll-button:hover {
+  box-shadow: 0 2px 2px 2px #F7E0B7;
+  transform: translateY(4px);
+}
+
+.header-navbar_item:hover {
+  border-bottom: 1px #F7E0B7 solid;
+  transform: translateY(4px);
+}
+
+.header-small-menu {
+  display:none;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+@media screen and (max-width: 1080px) {
+  .enroll-button {
+    font-size: 16px;
+  }
+
+  .header-navbar_item {
+    font-size: 16px;
+  }
+
+  .header-logo_title {
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .header-navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-navbar_item {
+    margin-left: 0;
+  }
+
+  .header-navbar_item:hover {
+    transform: translate(8px, 0);
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .header-navbar-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .header-navbar_item:hover {
+    border-bottom: none;
+  }
+
+  .header-navbar_item__small {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 550px) {
+  .header-navbar_item {
+    display: none;
+  }
+
+  .header-navbar_item__small {
+    display: block;
+  }
+
+  .enroll-button {
+    display: none;
+  }
+
+  .enroll-button__small {
+    display: block;
+    margin-top: 40px;
+  }
+
+  .header-small-menu {
+    display: flex;
+  }
+
+  .enroll-button__small {
+    padding: 6px 12px;
+    font-size: 16px;
+  }
+
+  .header-navbar_item {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .header-small-menu {
+    flex-direction: column;
+  }
+
+  .enroll-button__small {
+    margin-top: 5px;
+  }
+
+  .header-navbar_item__small:hover {
+    border-bottom: 1px #F7E0B7 solid;
+  }
+
+  .header {
+    height: 120px;
+    justify-content: space-evenly;
+  }
+}

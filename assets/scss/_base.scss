@@ -1,0 +1,122 @@
+/* Global base styles, variables and resets */
+
+/* CSS Custom Properties for theming */
+:root {
+  /* Colors */
+  --color-bg: #F7E0B7;
+  --color-surface: #FFFFFF;
+  --color-primary: #698D69;
+  --color-primary-contrast: #FFFFFF;
+  --color-text: #2C3E50;
+  --color-muted: #718096;
+  --color-accent: #8C6A4F;
+
+  /* Effects */
+  --shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.06);
+  --shadow-elevated: 0 16px 40px rgba(0, 0, 0, 0.12);
+
+  /* Radii */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+
+  /* Transitions */
+  --transition-fast: 150ms ease;
+  --transition-normal: 300ms ease;
+  --transition-slow: 500ms ease;
+}
+
+/* Dark theme removed per request; keep only light theme vars */
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-thumb { background: var(--color-primary); border-radius: 6px; }
+::-webkit-scrollbar-track { background: rgba(0,0,0,0.05); }
+
+/* Reset & base */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  color: var(--color-text);
+  background: var(--color-bg);
+  font-family: $font-body;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+
+/* Containers */
+.page-width { @include container($container-max); }
+
+/* Sticky header helper */
+.sticky { position: sticky; top: 0; z-index: $z-header; }
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border-radius: $radius-full;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  @include transition(all, $transition-normal);
+}
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--color-primary-contrast);
+}
+.btn-primary:hover { filter: brightness(0.95); transform: translateY(-1px); }
+.btn-ghost {
+  background: transparent;
+  border-color: rgba(0,0,0,0.08);
+  color: var(--color-text);
+}
+.btn-ghost:hover { background: rgba(0,0,0,0.03); }
+
+/* Responsive spacing adjustments */
+@media (max-width: 960px) {
+  .page-width { padding-left: 16px; padding-right: 16px; }
+}
+@media (max-width: 600px) {
+  .page-width { padding-left: 12px; padding-right: 12px; }
+}
+
+/* Card */
+.card {
+  background: var(--color-surface);
+  border-radius: $radius-lg;
+  box-shadow: var(--shadow-soft);
+  @include transition(transform, $transition-normal);
+}
+.card:hover { transform: translateY(-4px) scale(1.01); }
+
+/* Glass effect */
+.glass { @include glass; border-radius: $radius-lg; }
+
+/* Reveal animations */
+.reveal { opacity: 0; transform: translateY(14px) scale(.98); filter: blur(2px); transition: opacity var(--transition-slow), transform var(--transition-slow), filter var(--transition-slow); }
+.reveal.is-revealed { opacity: 1; transform: none; filter: none; }
+.reveal-left { transform: translateX(-16px); }
+.reveal-right { transform: translateX(16px); }
+.reveal-up { transform: translateY(16px); }
+.reveal-down { transform: translateY(-16px); }
+
+/* Page & layout transitions */
+.page-enter-active, .page-leave-active { transition: opacity 300ms ease, transform 300ms ease; }
+.page-enter-from, .page-leave-to { opacity: 0; transform: translateY(8px); }
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}
+
+/* Focus styles */
+:focus-visible { @include focus-ring(); border-radius: 6px; }

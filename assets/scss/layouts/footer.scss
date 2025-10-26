@@ -1,0 +1,74 @@
+#footer { width: 100%; margin-top: 40px; background: #698D69; }
+
+.footer { display:flex; flex-direction: row; justify-content: space-between; width: min(1280px, 90vw); margin: 0 auto; align-items: flex-start; padding: 20px 0; }
+
+.title {
+  font-family: 'CafeParisC';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 46px;
+  text-transform: uppercase;
+  color: #F7E0B7;
+  padding-top: 20px !important;
+}
+
+.contacts-number, .contacts-mail,
+.contacts-work-time, .contacts-address {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 36px;
+  color: #F7E0B7;
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  text-decoration: none;
+}
+
+.footer-contacts_left,.footer-contacts_right {
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.footer-contacts img {
+  margin-right: 20px;
+}
+
+.enroll-button {
+  background-color: #ffffff;
+  color: #698D69;
+  border-radius: 15px;
+  padding: 18px 24px;
+  text-decoration: none;
+  font-size: 16pt;
+  font-weight: 500;
+  transition: .3s ease;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 1280px) {
+  .contacts-number, .contacts-mail,
+  .contacts-work-time, .contacts-address {
+    font-size:20px;
+    line-height: 25px;;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .enroll-button {
+    margin-top: 40px;
+  }
+
+  .contacts-number, .contacts-mail,
+  .contacts-work-time, .contacts-address {
+    margin-top: 20px;
+  }
+
+  .footer {
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+}
