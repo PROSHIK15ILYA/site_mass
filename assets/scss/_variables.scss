@@ -1,88 +1,196 @@
 // Design tokens — Relaxation Studio (brand, spacing, typography, effects)
+// Calming color psychology palette with blues and earthy tones
 
-// Brand palette
-$color-sage: #698D69; // primary
-$color-cream: #F7E0B7; // secondary background
-$color-dark-green: #414A42;
+// Primary color palette - Calming blues and earth tones
+$color-primary: #4A90A4; // Calming blue-green
+$color-primary-light: #6BA8B8; // Lighter blue-green
+$color-primary-dark: #3A7A8A; // Darker blue-green
+
+// Secondary palette - Earthy tones
+$color-secondary: #8B7355; // Warm earth brown
+$color-secondary-light: #A68B6B; // Lighter earth tone
+$color-secondary-dark: #6B5A42; // Darker earth tone
+
+// Accent colors
+$color-accent: #7A9B7A; // Sage green accent
+$color-accent-light: #9BB89B; // Light sage
+$color-accent-dark: #5A7A5A; // Dark sage
+
+// Neutral palette
 $color-white: #FFFFFF;
-$color-dark-blue: #2C3E50; // text
-$color-accent: #8C6A4F; // refined warm accent for premium feel
+$color-cream: #F8F6F0; // Warm cream background
+$color-light-gray: #F5F5F5;
+$color-gray: #8B8B8B;
+$color-dark-gray: #4A4A4A;
+$color-black: #2C2C2C;
+
+// Text colors
+$color-text-primary: #2C3E50; // Deep blue-gray
+$color-text-secondary: #5A6B7A; // Medium blue-gray
+$color-text-muted: #8B9BA8; // Light blue-gray
 
 // Legacy compatibility aliases
-$primary-color: $color-sage;
-$secondary-color: $color-cream;
+$primary-color: $color-primary;
+$secondary-color: $color-secondary;
 $background-color: $color-cream;
-$text-color: $color-dark-blue;
-$text-light: #718096;
+$text-color: $color-text-primary;
+$text-light: $color-text-muted;
 $white: $color-white;
-$black: #000000;
+$black: $color-black;
 
 // Gradients & overlays
-$gradient-hero: linear-gradient(120deg, rgba($color-dark-green, 0.6), rgba($color-sage, 0.35));
-$gradient-card: linear-gradient(180deg, rgba($color-white, 0.6), rgba($color-white, 0.2));
+$gradient-hero: linear-gradient(135deg, rgba($color-primary-dark, 0.8), rgba($color-accent, 0.6));
+$gradient-card: linear-gradient(180deg, rgba($color-white, 0.95), rgba($color-cream, 0.8));
+$gradient-overlay: linear-gradient(45deg, rgba($color-primary, 0.1), rgba($color-accent, 0.1));
 
-// Spacing scale
-$space-1: 4px;
-$space-2: 8px;
-$space-3: 12px;
-$space-4: 16px;
-$space-5: 20px;
-$space-6: 24px;
-$space-7: 32px;
-$space-8: 40px;
-$space-9: 48px;
-$space-10: 64px;
+// Spacing scale (mobile-first)
+$space-xs: 0.25rem; // 4px
+$space-sm: 0.5rem;  // 8px
+$space-md: 1rem;     // 16px
+$space-lg: 1.5rem;   // 24px
+$space-xl: 2rem;     // 32px
+$space-2xl: 3rem;    // 48px
+$space-3xl: 4rem;    // 64px
+$space-4xl: 6rem;    // 96px
+$space-5xl: 8rem;    // 128px
 
-// Radii
-$radius-sm: 8px;
-$radius-md: 12px;
-$radius-lg: 20px;
-$radius-xl: 28px;
+// Legacy spacing (for compatibility)
+$space-1: $space-xs;
+$space-2: $space-sm;
+$space-3: 0.75rem;
+$space-4: $space-md;
+$space-5: 1.25rem;
+$space-6: $space-lg;
+$space-7: $space-xl;
+$space-8: 2.5rem;
+$space-9: $space-2xl;
+$space-10: $space-3xl;
+
+// Border radius scale
+$radius-xs: 0.25rem; // 4px
+$radius-sm: 0.5rem;  // 8px
+$radius-md: 0.75rem; // 12px
+$radius-lg: 1rem;    // 16px
+$radius-xl: 1.5rem;  // 24px
+$radius-2xl: 2rem;   // 32px
 $radius-full: 9999px;
 
-// Shadows (soft, elevated)
-$shadow-soft: 0 8px 24px rgba(0, 0, 0, 0.06);
-$shadow-elevated: 0 16px 40px rgba(0, 0, 0, 0.12);
+// Legacy radius aliases
+$radius-sm: $radius-sm;
+$radius-md: $radius-md;
+$radius-lg: $radius-lg;
+$radius-xl: $radius-xl;
 
-// Glassmorphism
-$glass-bg: rgba(255, 255, 255, 0.16);
-$glass-border: 1px solid rgba(255, 255, 255, 0.25);
-$glass-blur: 14px;
+// Shadows (soft, elevated, emotional)
+$shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.06);
+$shadow-md: 0 4px 8px rgba(0, 0, 0, 0.08);
+$shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.1);
+$shadow-xl: 0 16px 32px rgba(0, 0, 0, 0.12);
+$shadow-2xl: 0 24px 48px rgba(0, 0, 0, 0.15);
 
-// Transitions
-$transition-fast: 150ms ease;
-$transition-normal: 300ms ease;
-$transition-slow: 500ms ease;
+// Legacy shadow aliases
+$shadow-soft: $shadow-md;
+$shadow-elevated: $shadow-xl;
+
+// Glassmorphism effects
+$glass-bg: rgba(255, 255, 255, 0.1);
+$glass-border: 1px solid rgba(255, 255, 255, 0.2);
+$glass-blur: 16px;
+$glass-backdrop: backdrop-filter: blur($glass-blur);
+
+// Transitions (emotional, smooth)
+$transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+$transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+$transition-slow: 500ms cubic-bezier(0.4, 0, 0.2, 1);
+$transition-bounce: 400ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
 
 // Z-index scale
-$z-header: 1000;
-$z-overlay: 1100;
-$z-modal: 1200;
-$z-cursor: 1300;
+$z-dropdown: 1000;
+$z-sticky: 1020;
+$z-fixed: 1030;
+$z-modal-backdrop: 1040;
+$z-modal: 1050;
+$z-popover: 1060;
+$z-tooltip: 1070;
+$z-toast: 1080;
 
-// Breakpoints
+// Legacy z-index aliases
+$z-header: $z-sticky;
+$z-overlay: $z-modal-backdrop;
+$z-modal: $z-modal;
+$z-cursor: $z-tooltip;
+
+// Breakpoints (mobile-first)
+$bp-xs: 320px;
 $bp-sm: 480px;
 $bp-md: 768px;
 $bp-lg: 1024px;
 $bp-xl: 1280px;
 $bp-2xl: 1536px;
+$bp-3xl: 1920px;
 
-// Typography
-$font-heading: 'Poppins', 'Montserrat', 'Inter', system-ui, -apple-system, sans-serif;
-$font-body: 'Nunito', 'Source Sans Pro', system-ui, -apple-system, sans-serif;
-$font-accent: 'Playfair Display', 'Cormorant', serif;
+// Container queries breakpoints
+$container-sm: 20rem;  // 320px
+$container-md: 30rem;  // 480px
+$container-lg: 40rem;  // 640px
+$container-xl: 50rem;  // 800px
+$container-2xl: 60rem; // 960px
 
-$font-size-xs: 12px;
-$font-size-sm: 14px;
-$font-size-base: 16px;
-$font-size-lg: 18px;
-$font-size-xl: 20px;
-$font-size-2xl: 24px;
-$font-size-3xl: 30px;
-$font-size-4xl: 36px;
-$font-size-5xl: 48px;
-$font-size-6xl: 60px;
+// Typography system - Harmonious font pairing
+$font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+$font-secondary: 'Playfair Display', Georgia, 'Times New Roman', serif;
+$font-mono: 'JetBrains Mono', 'Fira Code', 'Monaco', 'Consolas', monospace;
+
+// Legacy font aliases
+$font-heading: $font-secondary;
+$font-body: $font-primary;
+$font-accent: $font-secondary;
+
+// Fluid typography scale (using clamp())
+$font-size-xs: clamp(0.75rem, 0.7rem + 0.25vw, 0.875rem);    // 12-14px
+$font-size-sm: clamp(0.875rem, 0.8rem + 0.375vw, 1rem);     // 14-16px
+$font-size-base: clamp(1rem, 0.95rem + 0.25vw, 1.125rem);   // 16-18px
+$font-size-lg: clamp(1.125rem, 1.05rem + 0.375vw, 1.25rem); // 18-20px
+$font-size-xl: clamp(1.25rem, 1.15rem + 0.5vw, 1.5rem);     // 20-24px
+$font-size-2xl: clamp(1.5rem, 1.35rem + 0.75vw, 1.875rem);  // 24-30px
+$font-size-3xl: clamp(1.875rem, 1.65rem + 1.125vw, 2.25rem); // 30-36px
+$font-size-4xl: clamp(2.25rem, 1.95rem + 1.5vw, 3rem);      // 36-48px
+$font-size-5xl: clamp(3rem, 2.5rem + 2.5vw, 4rem);          // 48-64px
+$font-size-6xl: clamp(3.75rem, 3rem + 3.75vw, 5rem);         // 60-80px
+
+// Legacy font size aliases
+$font-size-xs: $font-size-xs;
+$font-size-sm: $font-size-sm;
+$font-size-base: $font-size-base;
+$font-size-lg: $font-size-lg;
+$font-size-xl: $font-size-xl;
+$font-size-2xl: $font-size-2xl;
+$font-size-3xl: $font-size-3xl;
+$font-size-4xl: $font-size-4xl;
+$font-size-5xl: $font-size-5xl;
+$font-size-6xl: $font-size-6xl;
+
+// Line heights
+$line-height-tight: 1.25;
+$line-height-snug: 1.375;
+$line-height-normal: 1.5;
+$line-height-relaxed: 1.625;
+$line-height-loose: 2;
+
+// Font weights
+$font-weight-light: 300;
+$font-weight-normal: 400;
+$font-weight-medium: 500;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
 
 // Container widths
-$container-max: 1280px;
-$container-padding: 24px;
+$container-max: 80rem; // 1280px
+$container-padding: clamp(1rem, 2vw, 2rem); // Responsive padding
+
+// Grid system
+$grid-columns: 12;
+$grid-gap: clamp(1rem, 2vw, 2rem);
+$grid-gap-sm: clamp(0.5rem, 1vw, 1rem);
+$grid-gap-lg: clamp(1.5rem, 3vw, 3rem);

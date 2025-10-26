@@ -2,13 +2,32 @@
   "name": "relaxation-studio-ru",
   "type": "module",
   "private": true,
+  "version": "1.0.0",
+  "description": "Премиальная студия массажа и SPA в Туле",
   "scripts": {
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "start": "node .output/server/index.mjs",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "type-check": "nuxt typecheck",
+    "test": "vitest",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest --coverage",
+    "docker:build": "docker build -t relaxation-studio .",
+    "docker:dev": "docker-compose -f docker-compose.dev.yml up -d",
+    "docker:prod": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f",
+    "lighthouse": "lighthouse-ci",
+    "analyze": "nuxt analyze",
+    "clean": "rm -rf .nuxt .output node_modules/.cache",
+    "db:migrate": "node scripts/migrate.js",
+    "db:seed": "node scripts/seed.js",
+    "health": "curl -f http://localhost:3000/api/health"
   },
   "dependencies": {
     "@headlessui/vue": "^1.7.23",
@@ -28,7 +47,41 @@
   "devDependencies": {
     "@types/node": "^24.8.1",
     "@types/pg": "^8.15.5",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@vitest/ui": "^1.0.0",
+    "eslint": "^8.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-vue": "^9.0.0",
+    "lighthouse-ci": "^0.12.0",
+    "prettier": "^3.0.0",
     "sass": "^1.93.2",
-    "sass-loader": "^16.0.5"
-  }
+    "sass-loader": "^16.0.5",
+    "typescript": "^5.0.0",
+    "vitest": "^1.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=8.0.0"
+  },
+  "keywords": [
+    "массаж",
+    "спа",
+    "релаксация",
+    "Тула",
+    "nuxt",
+    "vue",
+    "typescript"
+  ],
+  "author": "Relaxation Studio Team",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-org/relaxation-studio.git"
+  },
+  "bugs": {
+    "url": "https://github.com/your-org/relaxation-studio/issues"
+  },
+  "homepage": "https://relaxation-studio.ru"
 }

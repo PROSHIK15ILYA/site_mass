@@ -1,0 +1,75 @@
+version: '3.8'
+
+services:
+  # Development Nuxt.js Application
+  app-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: relaxation-studio-dev
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=development
+      - NUXT_PUBLIC_SITE_URL=http://localhost:3000
+      - DB_HOST=postgres-dev
+      - DB_PORT=5432
+      - DB_NAME=relaxation_studio_dev
+      - DB_USER=postgres
+      - DB_PASSWORD=dev_password
+      - DB_SSL=false
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.nuxt
+    ports:
+      - "3000:3000"
+    depends_on:
+      postgres-dev:
+        condition: service_healthy
+    networks:
+      - dev-network
+    command: npm run dev
+
+  # Development PostgreSQL Database
+  postgres-dev:
+    image: postgres:15-alpine
+    container_name: relaxation-studio-db-dev
+    restart: unless-stopped
+    environment:
+      - POSTGRES_DB=relaxation_studio_dev
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=dev_password
+    volumes:
+      - postgres_dev_data:/var/lib/postgresql/data
+      - ./docker/postgres/init:/docker-entrypoint-initdb.d:ro
+    ports:
+      - "5432:5432"
+    networks:
+      - dev-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d relaxation_studio_dev"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Development Redis
+  redis-dev:
+    image: redis:7-alpine
+    container_name: relaxation-studio-redis-dev
+    restart: unless-stopped
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_dev_data:/data
+    networks:
+      - dev-network
+
+volumes:
+  postgres_dev_data:
+    driver: local
+  redis_dev_data:
+    driver: local
+
+networks:
+  dev-network:
+    driver: bridge

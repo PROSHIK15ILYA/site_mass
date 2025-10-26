@@ -1,10 +1,19 @@
-// Common mixins for accessibility, responsiveness, and effects
+// Modern mixins for accessibility, responsiveness, and emotional design
 
-@mixin focus-ring($color: rgba(105, 141, 105, 0.7)) {
+// Focus management
+@mixin focus-ring($color: rgba($color-primary, 0.7), $width: 3px) {
   outline: none;
-  box-shadow: 0 0 0 3px $color;
+  box-shadow: 0 0 0 $width $color;
+  border-radius: $radius-sm;
 }
 
+@mixin focus-visible {
+  &:focus-visible {
+    @include focus-ring();
+  }
+}
+
+// Accessibility
 @mixin visually-hidden {
   position: absolute !important;
   width: 1px;
@@ -17,6 +26,11 @@
   border: 0;
 }
 
+@mixin sr-only {
+  @include visually-hidden;
+}
+
+// Container and layout
 @mixin container($max: $container-max) {
   max-width: $max;
   margin-left: auto;
@@ -25,29 +39,320 @@
   padding-right: $container-padding;
 }
 
+@mixin container-fluid {
+  width: 100%;
+  padding-left: $container-padding;
+  padding-right: $container-padding;
+}
+
+// Responsive breakpoints (mobile-first)
 @mixin breakpoint($min) {
   @media (min-width: $min) {
     @content;
   }
 }
 
+@mixin breakpoint-down($max) {
+  @media (max-width: $max - 1px) {
+    @content;
+  }
+}
+
+@mixin breakpoint-between($min, $max) {
+  @media (min-width: $min) and (max-width: $max - 1px) {
+    @content;
+  }
+}
+
+// Container queries
+@mixin container-query($size) {
+  @container (min-width: $size) {
+    @content;
+  }
+}
+
+@mixin container-sm {
+  @container (min-width: $container-sm) {
+    @content;
+  }
+}
+
+@mixin container-md {
+  @container (min-width: $container-md) {
+    @content;
+  }
+}
+
+@mixin container-lg {
+  @container (min-width: $container-lg) {
+    @content;
+  }
+}
+
+@mixin container-xl {
+  @container (min-width: $container-xl) {
+    @content;
+  }
+}
+
+// CSS Grid utilities
+@mixin grid($columns: 1, $gap: $grid-gap) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  gap: $gap;
+}
+
+@mixin grid-auto-fit($min-width: 250px, $gap: $grid-gap) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax($min-width, 1fr));
+  gap: $gap;
+}
+
+@mixin grid-auto-fill($min-width: 250px, $gap: $grid-gap) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax($min-width, 1fr));
+  gap: $gap;
+}
+
+@mixin grid-area($area) {
+  grid-area: $area;
+}
+
+// Flexbox utilities
+@mixin flex($direction: row, $justify: flex-start, $align: stretch, $wrap: nowrap) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  flex-wrap: $wrap;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin flex-column-center {
+  @include flex-column;
+  align-items: center;
+}
+
+// Visual effects
 @mixin elevation($level: soft) {
-  @if $level == soft {
-    box-shadow: $shadow-soft;
-  } @else if $level == elevated {
-    box-shadow: $shadow-elevated;
+  @if $level == xs {
+    box-shadow: $shadow-xs;
+  } @else if $level == sm {
+    box-shadow: $shadow-sm;
+  } @else if $level == md {
+    box-shadow: $shadow-md;
+  } @else if $level == lg {
+    box-shadow: $shadow-lg;
+  } @else if $level == xl {
+    box-shadow: $shadow-xl;
+  } @else if $level == 2xl {
+    box-shadow: $shadow-2xl;
   } @else {
     box-shadow: none;
   }
 }
 
-@mixin transition($props: all, $dur: $transition-normal, $easing: ease) {
+@mixin glass($opacity: 0.1, $blur: $glass-blur) {
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  background: rgba(255, 255, 255, $opacity);
+  border: 1px solid rgba(255, 255, 255, $opacity * 2);
+}
+
+@mixin glass-dark($opacity: 0.1, $blur: $glass-blur) {
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  background: rgba(0, 0, 0, $opacity);
+  border: 1px solid rgba(255, 255, 255, $opacity * 0.5);
+}
+
+// Transitions and animations
+@mixin transition($props: all, $dur: $transition-normal, $easing: cubic-bezier(0.4, 0, 0.2, 1)) {
   transition: $props $dur $easing;
 }
 
-@mixin glass {
-  backdrop-filter: blur($glass-blur);
-  -webkit-backdrop-filter: blur($glass-blur);
-  background: $glass-bg;
-  border: $glass-border;
+@mixin transition-fast($props: all) {
+  @include transition($props, $transition-fast);
+}
+
+@mixin transition-slow($props: all) {
+  @include transition($props, $transition-slow);
+}
+
+@mixin transition-bounce($props: all) {
+  @include transition($props, $transition-bounce);
+}
+
+// Scroll-triggered animations
+@mixin reveal-animation($direction: up, $distance: 20px) {
+  opacity: 0;
+  transform: translateY($distance);
+  transition: opacity $transition-slow, transform $transition-slow;
+  
+  &.is-revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  @if $direction == left {
+    transform: translateX(-$distance);
+    &.is-revealed { transform: translateX(0); }
+  } @else if $direction == right {
+    transform: translateX($distance);
+    &.is-revealed { transform: translateX(0); }
+  } @else if $direction == down {
+    transform: translateY(-$distance);
+    &.is-revealed { transform: translateY(0); }
+  }
+}
+
+// Typography utilities
+@mixin text-fluid($min-size, $max-size, $min-width: 320px, $max-width: 1200px) {
+  font-size: clamp(#{$min-size}, #{$min-size} + (#{strip-unit($max-size)} - #{strip-unit($min-size)}) * ((100vw - #{$min-width}) / (#{strip-unit($max-width)} - #{strip-unit($min-width)})), #{$max-size});
+}
+
+@mixin text-balance {
+  text-wrap: balance;
+}
+
+@mixin text-pretty {
+  text-wrap: pretty;
+}
+
+// Utility functions
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+  @return $number;
+}
+
+// Aspect ratio utilities
+@mixin aspect-ratio($width, $height) {
+  aspect-ratio: #{$width} / #{$height};
+}
+
+@mixin aspect-square {
+  @include aspect-ratio(1, 1);
+}
+
+@mixin aspect-video {
+  @include aspect-ratio(16, 9);
+}
+
+// Spacing utilities
+@mixin spacing($property, $value) {
+  #{$property}: $value;
+}
+
+@mixin margin($top: null, $right: null, $bottom: null, $left: null) {
+  margin-top: $top;
+  margin-right: $right;
+  margin-bottom: $bottom;
+  margin-left: $left;
+}
+
+@mixin padding($top: null, $right: null, $bottom: null, $left: null) {
+  padding-top: $top;
+  padding-right: $right;
+  padding-bottom: $bottom;
+  padding-left: $left;
+}
+
+// Button utilities
+@mixin button-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-sm;
+  padding: $space-sm $space-lg;
+  border-radius: $radius-full;
+  font-weight: $font-weight-medium;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  @include transition-fast();
+  @include focus-visible;
+}
+
+@mixin button-primary {
+  @include button-base;
+  background: $color-primary;
+  color: $color-white;
+  
+  &:hover {
+    background: $color-primary-dark;
+    transform: translateY(-1px);
+    @include elevation(md);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+@mixin button-secondary {
+  @include button-base;
+  background: transparent;
+  border-color: $color-primary;
+  color: $color-primary;
+  
+  &:hover {
+    background: $color-primary;
+    color: $color-white;
+  }
+}
+
+// Card utilities
+@mixin card-base {
+  background: $color-white;
+  border-radius: $radius-lg;
+  @include elevation(md);
+  @include transition-fast();
+  
+  &:hover {
+    transform: translateY(-2px);
+    @include elevation(lg);
+  }
+}
+
+// Responsive utilities
+@mixin hide-on-mobile {
+  @include breakpoint-down($bp-md) {
+    display: none;
+  }
+}
+
+@mixin show-on-mobile {
+  @include breakpoint($bp-md) {
+    display: none;
+  }
+}
+
+@mixin hide-on-desktop {
+  @include breakpoint($bp-lg) {
+    display: none;
+  }
+}
+
+@mixin show-on-desktop {
+  @include breakpoint-down($bp-lg) {
+    display: none;
+  }
 }
