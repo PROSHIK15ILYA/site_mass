@@ -142,7 +142,7 @@ const initTheme = () => {
 const initScrollReveal = () => {
   const revealElements = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-up, .reveal-down')
   revealElements.forEach(element => {
-    addRevealElement(element as HTMLElement)
+    addRevealElement(element)
   })
 }
 
@@ -150,8 +150,8 @@ const initScrollReveal = () => {
 const initMicroInteractions = () => {
   const interactiveElements = document.querySelectorAll('.btn, .card, .nav-link')
   interactiveElements.forEach(element => {
-    addHoverEffect(element as HTMLElement)
-    addClickRipple(element as HTMLElement)
+    addHoverEffect(element)
+    addClickRipple(element)
   })
 }
 

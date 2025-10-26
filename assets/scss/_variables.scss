@@ -97,7 +97,7 @@ $shadow-elevated: $shadow-xl;
 $glass-bg: rgba(255, 255, 255, 0.1);
 $glass-border: 1px solid rgba(255, 255, 255, 0.2);
 $glass-blur: 16px;
-$glass-backdrop: backdrop-filter: blur($glass-blur);
+$glass-backdrop: backdrop-filter blur($glass-blur);
 
 // Transitions (emotional, smooth)
 $transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);

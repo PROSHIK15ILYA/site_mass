@@ -235,7 +235,7 @@ const openBooking = () => {
 
 // Close menu on escape key
 onMounted(() => {
-  const handleEscape = (e: KeyboardEvent) => {
+  const handleEscape = (e) => {
     if (e.key === 'Escape' && menuOpen.value) {
       menuOpen.value = false
     }
