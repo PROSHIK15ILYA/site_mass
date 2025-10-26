@@ -1,6 +1,3 @@
-// Comprehensive SEO composable with structured data and dynamic meta tags
-import { useHead } from '#app'
-
 export interface SEOConfig {
   title?: string
   description?: string
